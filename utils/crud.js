@@ -1,9 +1,6 @@
 export const getOne = (model) => async (req, res) => {
   try {
-    const doc = await model
-      .findOne({ userEmail: req.body.userEmail })
-      .lean()
-      .exec();
+    const doc = await model.findOne({ userEmail: req.params.id }).lean().exec();
 
     if (!doc) {
       return res.status(400).end();
